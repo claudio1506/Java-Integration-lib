@@ -56,6 +56,7 @@ class Utils {
 		String sResponse = "";
 
 		System.setProperty("java.protocol.handler.pkgs", "javax.net.ssl");
+		System.setProperty("https.protocols", "TLSv1.2");
 
 		if (url.startsWith("https:"))
 			bHTTPS = true;

@@ -7,13 +7,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import javax.net.ssl.HttpsURLConnection;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.annotations.Annotations;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-import com.thoughtworks.xstream.mapper.MapperWrapper;
 
-import maxiPago.DataContract.*;
+import javax.net.ssl.HttpsURLConnection;
+
+import maxiPago.DataContract.ResponseBase;
 import maxiPago.DataContract.NonTransactional.ApiRequest;
 import maxiPago.DataContract.NonTransactional.ApiResponse;
 import maxiPago.DataContract.Reports.RapiRequest;
@@ -22,10 +19,13 @@ import maxiPago.DataContract.Reports.Record;
 import maxiPago.DataContract.Reports.Records;
 import maxiPago.DataContract.Transactional.ErrorResponse;
 import maxiPago.DataContract.Transactional.Item;
-import maxiPago.DataContract.Transactional.ItemList;
 import maxiPago.DataContract.Transactional.Order;
 import maxiPago.DataContract.Transactional.TransactionRequest;
 import maxiPago.DataContract.Transactional.TransactionResponse;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.thoughtworks.xstream.mapper.MapperWrapper;
 
 class Utils {
 	
@@ -56,6 +56,7 @@ class Utils {
 		String sResponse = "";
 
 		System.setProperty("java.protocol.handler.pkgs", "javax.net.ssl");
+		System.setProperty("https.protocols", "TLSv1.2");
 
 		if (url.startsWith("https:"))
 			bHTTPS = true;
